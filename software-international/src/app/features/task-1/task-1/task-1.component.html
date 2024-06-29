@@ -1,0 +1,46 @@
+<section>
+  <div class="container">
+    <button class="add-job-btn" (click)="addCompany()" color="accent" mat-raised-button>Add Job</button>
+    <form [formGroup]="form">
+        <div formArrayName="companies">
+          <div class="company-container" *ngFor="let company of companies.controls; let i = index" [formGroupName]="i">
+              <div class="company">
+                <app-custom-input class="input" [label]="'Company Name'" formControlName="companyName"></app-custom-input>
+                <app-custom-input class="input" [label]="'Company Website'" formControlName="companyWebsite"></app-custom-input>
+                <app-custom-input class="input" [label]="'Company Description'" formControlName="companyDescription"></app-custom-input>
+              </div >
+
+              <div formArrayName="positions">
+                  <div class="position" *ngFor="let position of getPositions(i).controls; let j = index" [formGroupName]="j">
+                      <app-custom-input formControlName="positionName" [label]="'Position Name'"></app-custom-input>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Position Level</mat-label>
+                        <mat-select formControlName="positionLevel">
+                          <mat-option value="Junior">Junior</mat-option>
+                          <mat-option value="Middle">Middle</mat-option>
+                          <mat-option value="Senior">Senior</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <mat-form-field appearance="outline">
+                        <textarea matInput formControlName="positionDescription" placeholder="Position Description"></textarea>
+                      </mat-form-field >
+                      <mat-checkbox formControlName="isCurrentlyWorking">Currently Working</mat-checkbox>
+                      <mat-form-field appearance="outline">
+                        <mat-label>From</mat-label>
+                          <input matInput type="date" formControlName="fromDate">
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" *ngIf="!position.get('isCurrentlyWorking')?.value">
+                        <mat-label>To</mat-label>
+                        <input matInput type="date" formControlName="toDate">
+                      </mat-form-field>
+                      <button mat-raised-button (click)="removePosition(i, j)">Remove Position</button>
+
+                  </div>
+                  <button mat-raised-button (click)="addPosition(i)">Add Position</button >
+                </div>
+          </div >
+        </div>
+    </form>
+  </div>
+</section>
+
