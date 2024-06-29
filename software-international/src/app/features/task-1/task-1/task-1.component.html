@@ -1,6 +1,6 @@
 <section>
   <div class="container">
-    <button class="add-job-btn" (click)="addCompany()" color="accent" mat-raised-button>Add Job</button>
+    <button class="add-job-btn" (click)="addCompany()" color="accent" mat-raised-button>Add Company</button>
     <form [formGroup]="form">
         <div formArrayName="companies">
           <div class="company-container" *ngFor="let company of companies.controls; let i = index" [formGroupName]="i">
@@ -8,6 +8,7 @@
                 <app-custom-input class="input" [label]="'Company Name'" formControlName="companyName"></app-custom-input>
                 <app-custom-input class="input" [label]="'Company Website'" formControlName="companyWebsite"></app-custom-input>
                 <app-custom-input class="input" [label]="'Company Description'" formControlName="companyDescription"></app-custom-input>
+                <button mat-raised-button (click)="removeCompany(i)">Remove Company</button>
               </div >
 
               <div formArrayName="positions">

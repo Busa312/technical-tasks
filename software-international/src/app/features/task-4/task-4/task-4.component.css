@@ -1,0 +1,36 @@
+.calendar {
+  margin: 48px auto;
+  max-width: 960px;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  font-weight: bold;
+}
+
+.weekday {
+  text-align: center;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.day {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.weekend {
+  background-color: lightblue;
+}
+
+.current-day {
+  font-weight: bold;
+  color: red;
+}

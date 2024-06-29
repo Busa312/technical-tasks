@@ -1,0 +1,14 @@
+<div class="calendar">
+  <div class="weekdays">
+    <div *ngFor="let weekday of weekdays" class="weekday">{{ weekday }}</div>
+  </div>
+  <div class="days">
+    <div *ngFor="let day of daysInMonth" class="day"
+         [ngClass]="{
+           'weekend': day && (day.getDay() === 0 || day.getDay() === 6),
+           'current-day': day && day.getDate() === currentDay
+         }">
+      <span *ngIf="day">{{ day.getDate() }}</span>
+    </div>
+  </div>
+</div>

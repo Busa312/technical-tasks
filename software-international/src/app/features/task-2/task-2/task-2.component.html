@@ -1,0 +1,12 @@
+<div class="page">
+  <div class="search-wrapper">
+    <app-custom-input [label]="'Search...'" [formControl]="movieTitleSearch"></app-custom-input>
+  </div>
+
+  <section>
+    <div class="wrapper" *ngFor="let movie of movies">
+      <app-movie-card [movieInfo]="movie"></app-movie-card>
+    </div>
+  </section>
+</div>
+
